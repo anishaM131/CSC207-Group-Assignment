@@ -3,12 +3,13 @@
 ## Ideas:
 ### ANISHA:
 Entities: Paper, SectionTag, SectionNote
+
 \External API: OpenAlex API (or CrossRef API) for use case 1 for searching real academic papers by title, keyword, or DOI
 
 #### 1. Search & Import Paper (API)
 User story: As a researcher writing a paper, I want to search for academic articles by title, keyword, or DOI using an external literature API and save relevant results into my personal library, so that I do not have to manually type out bibliographic details.
 
-\ flow/details:
+\flow/details:
 1. User enters a search query (title, keyword, or DOI) into the search bar.
 2. System queries the external academic API (e.g., OpenAlex or CrossRef) and displays matching papers (title, authors, year, abstract).
 3. User selects a paper and clicks Add to Library (or uses a manual-entry option if a paper is not indexed).
