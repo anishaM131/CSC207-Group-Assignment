@@ -37,9 +37,8 @@ User Story: As a researcher transitioning from reading to writing, I want to exp
 3. User previews the generated outline and exports it to a local .md or a .txt file.
 
 
-### EBUKA:
 
-# IDEA: Finance / Budgeting App
+## EBUKA'S IDEA: Finance / Budgeting App
 
 ## General Purpose
 
