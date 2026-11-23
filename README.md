@@ -91,8 +91,6 @@ Users can create monthly budgets, record and categorize income and expenses, set
 
 ## Entities
 
-The application will include the following entities:
-
 - `Budget`
 - `BudgetCategory`
 - `Transaction`
