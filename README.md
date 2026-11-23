@@ -38,7 +38,7 @@ User Story: As a researcher transitioning from reading to writing, I want to exp
 
 
 
-## EBUKA'S IDEA: Finance / Budgeting App
+## EBUKA: Finance / Budgeting App
 
 ## General Purpose
 
