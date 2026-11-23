@@ -35,3 +35,166 @@ User Story: As a researcher transitioning from reading to writing, I want to exp
 1. User selects a target scope (for ex. Introduction section only, or all sections) and chooses a citation format (APA, IEEE, or BibTeX).
 2. System groups the matching papers by section, formats each reference according to the chosen style, and attaches the user's section notes underneath each citation.
 3. User previews the generated outline and exports it to a local .md or a .txt file.
+
+
+### EBUKA:
+
+# IDEA: Finance / Budgeting App
+
+## General Purpose
+
+The application is a personal finance management tool that helps users organize their finances, monitor spending, and make informed budgeting decisions.
+
+Users can create monthly budgets, record and categorize income and expenses, set financial goals, and review spending patterns through summaries and visualizations.
+
+## Core Use Cases
+
+### Use Case #1: Create & Manage a Budget
+
+**Main Flow:**
+1. User creates a new empty budget.
+2. User selects a period and an overall spending limit.
+3. User creates spending categories (e.g., Food, Travel, Entertainment).
+4. User assigns a spending limit specific to each category.
+5. System saves the budget.
+6. System displays all the limits.
+7. User can view, edit, or delete the overall budget and/or its categories.
+
+### Use Case #2: Record & Categorize Transactions
+
+**Main Flow:**
+1. User creates a new empty transaction.
+2. User enters its amount, date, type (income/expense), and category.
+3. System validates the transaction.
+4. System saves the transaction.
+5. System updates the user's financial summary and relevant budget totals.
+6. User can view, edit, or delete existing transactions.
+
+### Use Case #3: Analyze Spending Habits
+
+**Main Flow:**
+1. User selects a period to analyze.
+2. System retrieves the transactions recorded during that period.
+3. System calculates total income, total expenses, and remaining budget.
+4. System breaks down expenses by category.
+5. System displays the results through summaries and charts.
+
+### Use Case #4: Set & Track Savings Goals
+
+**Main Flow:**
+1. User creates a new empty savings goal.
+2. User gives it a title (e.g., "Save for GTA 6"), as well as a target amount and date.
+3. User optionally enters an initial saved amount.
+4. System saves the goal and calculates the remaining amount.
+5. User updates their savings progress as time goes by.
+6. System displays progress toward the target.
+7. User can view, edit, or delete existing savings goals.
+
+## Entities
+
+The application will include the following entities:
+
+- `Budget`
+- `BudgetCategory`
+- `Transaction`
+- `TransactionType`
+- `SavingsGoal`
+- `SavingsContribution`
+
+### Budget
+
+```java
+public class Budget {
+
+    private String name;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private double spendingLimit;
+    private List<BudgetCategory> categories;
+
+}
+```
+
+### BudgetCategory
+
+```java
+public class BudgetCategory {
+
+    private String name;
+    private double spendingLimit;
+
+}
+```
+
+### Transaction
+
+```java
+public class Transaction {
+
+    private double amount;
+    private LocalDate date;
+    private TransactionType type;
+    private BudgetCategory category;
+
+}
+```
+
+### TransactionType
+
+```java
+public enum TransactionType {
+    INCOME,
+    EXPENSE
+}
+```
+
+### SavingsGoal
+
+```java
+public class SavingsGoal {
+
+    private String title;
+    private double targetAmount;
+    private LocalDate targetDate;
+    private List<SavingsContribution> contributions;
+
+    public double getSavedAmount() {
+        return contributions.stream()
+                .mapToDouble(SavingsContribution::getAmount)
+                .sum();
+    }
+
+    public double getRemainingAmount() {
+        return Math.max(0, targetAmount - getSavedAmount());
+    }
+
+    public double getProgressPercentage() {
+        if (targetAmount <= 0) {
+            return 0;
+        }
+
+        return Math.min(100.0,
+                (getSavedAmount() / targetAmount) * 100);
+    }
+
+}
+```
+
+### SavingsContribution
+
+```java
+public class SavingsContribution {
+
+    private double amount;
+    private LocalDate date;
+
+}
+```
+
+## Pages
+
+- **Dashboard:** Overview of total income, expenses, remaining budget, and goal progress.
+- **Budgeting:** Create, edit, and delete budgets and spending categories.
+- **Transactions:** Add, edit, delete, and filter transactions.
+- **Visual Analytics:** Charts showing spending by category and over time.
+- **Savings Goals:** Add, edit, delete, and filter financial goals.
