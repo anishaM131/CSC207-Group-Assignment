@@ -195,3 +195,98 @@ public class SavingsContribution {
 - **Transactions:** Add, edit, delete, and filter transactions.
 - **Visual Analytics:** Charts showing spending by category and over time.
 - **Savings Goals:** Add, edit, delete, and filter financial goals.
+
+## RICHARD: Recipe Creator and Nutrition Tracker
+
+External API: USDA Food Data Central API (https://fdc.nal.usda.gov/api-guide/)
+
+The application will focus on three main functionalities:
+1. Recipe Creation: Create and edit recipes by selecting ingredients, specifying quantities, and providing preparation instructions.
+2. Nutrition Calculation: Automatically retrieve nutritional information for ingredients and calculate the total nutritional value of recipes.
+3. Nutrition Tracking: Log meals and monitor daily nutrition against customizable nutrition goals.
+
+## Use Cases
+Use Case 1 – Create a Recipe; User creates and saves a recipe containing ingredients and preparation instructions.\
+User Story – Create and Manage Recipes, Search Ingredients and Calculate Nutrition
+
+Main Flow:
+1. User navigates to the daily nutrition tracker.
+2. User selects a meal category (breakfast, lunch, dinner, or snack).
+3. User chooses a saved recipe or searches for an individual food item.
+4. User specifies the quantity or number of servings consumed.
+5. Application retrieves the nutritional information if necessary and calculates the nutritional values based on the consumed quantity.
+6. Application adds the food item to the selected meal category.
+7. Application displays the updated totals alongside the user's daily nutritional goals.
+
+
+Use Case 2 – Track Daily Nutrition; User logs a meal and views their accumulated daily nutritional intake.\
+User Story – Track nutrition over time in order to monitor progress and maintain consistency
+
+Main Flow:
+1. User navigates to the daily nutrition tracker and selects a meal category (breakfast, lunch, dinner, or snack).
+2. User chooses a saved recipe or searches for an individual food item.
+3. User specifies the quantity or number of servings consumed.
+4. Application retrieves the nutritional information if necessary and calculates the nutritional values based on the consumed quantity.
+5. Application adds the food item to the selected meal category and updates the user's daily nutritional totals.
+6. The application displays the updated totals alongside the user's daily nutritional goals.
+
+
+Use Case 3 – Set and Monitor Nutritional Goals; user establishes nutritional targets and monitors their progress.\
+User Story – I want to establish daily nutritional goals so that I can compare my actual food intake against my personal targets.
+
+Main Flow:
+1. User navigates to the nutritional goals section.
+2. Application displays the current nutritional targets.
+3. User enters their desired daily calorie, protein, carbohydrate, and fat goals and saves their goals.
+4. Application compares the user's daily nutritional intake against these targets and displays the amount consumed and the amount remaining for each nutrient.
+5. User can revisit the section to monitor their progress throughout the day.
+
+Use Case 4 – Edit or Delete a Recipe; Use Case 4 – Copy, Edit or Delete a Recipe\
+User Story - I want to edit the recipe's I've created or create an alternative version of an existing recipe
+
+Main Flow:
+1. User navigates to their saved recipes and selects a recipe.
+2. Application displays its ingredients, instructions, and nutritional information.
+3. User selects Copy, Edit or Delete.
+4. If editing, the user modifies the ingredients, quantities, or instructions.
+5. Application recalculates the nutritional information and saves the updated recipe.
+
+## Entities
+Entity 1 – User
+Represents an individual using the application.
+
+Entity 2 – Recipe
+Represents a recipe created and saved by a user.
+
+Entity 3 – Ingredient
+Represents an individual food item included in a recipe or food log.
+
+Entity 4 – NutritionInfo
+Represents the nutritional composition of a food item, recipe, or meal.
+
+Entity 5 – FoodLog
+Represents a user's recorded food consumption for a particular day.
+
+Entity 6 – NutritionGoals
+Represents the user's daily nutritional targets.
+
+##API Usage
+API Name: USDA FoodData Central API
+
+Documentation: https://fdc.nal.usda.gov/api-guide/
+
+The API will primarily be used through two endpoints:
+1. Food Search Endpoint
+GET /fdc/v1/foods/search
+- Allows users to search for ingredients by entering a food name or keyword.
+- Returns a list of matching food items.
+- Provides information such as the food description, FDC ID, and available nutrient information.
+- Allows users to select the appropriate ingredient from the search results.
+Example: When a user searches for "Chicken Breast", the app retrieves matching food items and displays them for selection.
+
+2. Food Details Endpoint
+GET /fdc/v1/food/{fdcId}
+- Retrieves detailed nutritional information for a specific food item.
+- Uses the food item's unique FDC ID obtained from the search results.
+- Returns nutrient information such as calories, protein, carbohydrates, and fats.
+- Allows the application to calculate nutritional values based on the quantity of each ingredient.
