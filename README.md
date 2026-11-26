@@ -290,3 +290,86 @@ GET /fdc/v1/food/{fdcId}
 - Uses the food item's unique FDC ID obtained from the search results.
 - Returns nutrient information such as calories, protein, carbohydrates, and fats.
 - Allows the application to calculate nutritional values based on the quantity of each ingredient.
+
+
+
+### MALIHA: Travel Planner & Trip Organizer
+# General Purpose
+The application is a travel planning tool that helps users organize trips, discover destinations, manage travel expenses, and create personalized itineraries.
+
+Users can create trips, add destinations and activities, track travel budgets, and organize accommodation and transportation information in one place.
+Core Use Cases
+## Use Case #1: Create & Manage Trips
+# User Story:
+As a traveller, I want to create and manage trips by entering destinations, travel dates, and trip details so that I can organize my upcoming travels.
+
+# Main Flow:
+1. User creates a new trip.
+2. User enters the trip name, destination, departure date, and return date.
+3. User optionally adds travel companions and notes.
+4. System saves the trip.
+5. System displays the trip in the user's dashboard.
+6. User can view, edit, or delete existing trips.
+
+## Use Case #2: Search & Save Destinations (API)
+# User Story: 
+As a traveller, I want to search for destinations and attractions using an external API so that I can discover places worth visiting and save them to my trips.
+
+# Main Flow:
+1. User enters a destination or attraction into the search bar.
+2. System queries an external API.
+3. System displays matching locations with descriptions, addresses, and available ratings.
+4. User selects a location.
+5. System saves the selected destination to their trip.
+6. User can view or remove saved destinations.
+
+## Use Case #3: Create & Manage Travel Itineraries
+# User Story: 
+As a traveller, I want to organize activities and attractions by date and time so that I can plan my daily schedule.
+
+# Main Flow:
+1. User selects an existing trip.
+2. User navigates to the itinerary section.
+3. User adds an activity or attraction.
+4. User enters its date, start time, duration, and optional notes.
+5. System organizes activities chronologically.
+6. User can rearrange, edit, or delete activities.
+7. System displays the completed daily itinerary.
+
+## Use Case #4: Track & Manage Travel Expenses
+# User Story: 
+As a traveller, I want to record travel expenses and compare them against my budget so that I can avoid overspending.
+
+# Main Flow:
+1. User selects a trip.
+2. User establishes an overall travel budget.
+3. User records an expense by entering its amount, date, and category.
+4. System categorizes the expense (e.g., accommodation, transportation, food, entertainment).
+5. The system calculates total spending and remaining budget.
+6. The system displays spending summaries and visualizations.
+7. User can edit or delete expenses.
+
+# Entities
+- User
+- Trip
+- Destination
+- Activity
+- Itinerary
+- Expense
+- ExpenseCategory
+
+## External API
+API: Google Places API
+
+Documentation: Google Places API Documentation
+
+The API would be used to:
+- Search for tourist attractions, restaurants, and landmarks.
+- Retrieve place names, addresses, descriptions, and ratings.
+- Display location information when users add destinations to their trips.
+Application Pages
+- Dashboard: Overview of upcoming trips and saved destinations.
+- My Trips: Create, edit, delete, and view trips.
+- Explore: Search for destinations and attractions.
+- Itinerary: Organize activities by date and time.
+- Travel Budget: Record expenses and monitor spending.
